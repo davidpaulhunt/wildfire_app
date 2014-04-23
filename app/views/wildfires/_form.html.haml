@@ -19,13 +19,17 @@
     = f.label :size
     %br/
     = f.select :size, [1, 2, 3]
+    %br/
   .field
     = f.label "Fire ongoing?"
-    %br/
     = f.check_box :ongoing
+    %br/
+    %br
   .field
     = f.label :location_id
     %br/
     = f.select :location_id, Location.all.collect {|l| [(l.city + ", " + l.state), l.id ]}
+    %br/
+    %br
   .actions
-    = f.submit
+    = f.submit("Report Fire", :class => "btn btn-success")

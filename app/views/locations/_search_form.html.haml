@@ -1,0 +1,5 @@
+= form_tag(results_locations_path, method: "get") do
+  = label_tag(:q, "Find a location:")
+  = text_field_tag(:search, params[:search])
+  = select_tag :query, "<option>By location</option><option>By date</option>".html_safe
+  = submit_tag("Search", :class => "btn btn-primary")

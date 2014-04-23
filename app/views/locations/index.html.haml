@@ -12,25 +12,22 @@
   %tbody
     - @locations.each do |location|
       %tr
-        %td= location.city
+        %td
+          %h6= location.city
         %td= location.state
         - if location.prevention_program
           %td= "Yes"
         - else
           %td= "No"
-        %td= link_to 'View', location
+        %td= button_to 'View', location, :method => "get", :class => "btn btn-primary"
         %td
-        %td= link_to 'Edit', edit_location_path(location)
+        %td= button_to 'Edit', edit_location_path(location), :method => "get", :class => "btn"
         %td
-        %td= link_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= button_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"
 %br/
-= link_to 'ADD NEW LOCATION', new_location_path
+= button_to 'NEW LOCATION', new_location_path, :method => "get", :class => "btn btn-success"
 %br
 %br
 %br
 
-= form_tag(results_locations_path, method: "get") do
-  = label_tag(:q, "Find a location:")
-  = text_field_tag(:search, params[:search])
-  = select_tag :query, "<option>By location</option><option>By date</option>".html_safe
-  = submit_tag("Search")
+= render 'search_form'

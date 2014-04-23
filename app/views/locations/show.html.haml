@@ -7,9 +7,13 @@
   = @location.state
 %p
   %strong Prevention program:
-  = @location.prevention_program
-= link_to 'Edit', edit_location_path(@location)
+  - if @location.prevention_program
+    ="Yes"
+  - else
+    ="No"
+= button_to 'Edit', edit_location_path(@location), :method => "get", :class => "btn btn-warning"
+%br/
+= button_to 'Report Wildfire', new_wildfire_path, :method => "get", :class => "btn btn-success", :location_id => "#{@location_id}"
 %br
-= link_to 'Add a wildfire', new_wildfire_path
-|
-\#{link_to 'Back', locations_path}
+
+\#{button_to 'Back', locations_path, :method => "get", :class => "btn"}

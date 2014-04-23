@@ -14,10 +14,11 @@
   .field
     = f.label :state
     %br/
-    = f.text_field :state
+    = f.select :state, us_states
   .field
-    = f.label :prevention_program
-    %br/
+    = f.label "Has a prevention program"
     = f.check_box :prevention_program
+    %br/
+    %br
   .actions
-    = f.submit
+    = f.submit(:value => "Submit", :class => "btn btn-success")
