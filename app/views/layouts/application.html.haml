@@ -18,8 +18,11 @@
 					%ul.nav
 						%li= link_to "Known Locations", locations_path
 						%li= link_to "Recorded Wildfire Events", wildfires_path
-						%li= link_to "Add a Location", new_location_path
-						%li= link_to "Report a Fire", new_wildfire_path
+						%li
+							=button_to "Add a Location", new_location_path, :method => "get", :class => "btn btn-sm"
+						%li
+							=button_to "Report a Fire", new_wildfire_path, :method => "get", :class => "btn btn-sm"
+%br
 %br
 %br
 = yield
