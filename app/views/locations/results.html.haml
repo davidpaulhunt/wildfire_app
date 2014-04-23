@@ -1,0 +1,19 @@
+%h1 Listing locations
+%table
+	%thead
+		%tr
+			%th City
+			%th State
+			%th When
+	%tbody
+		- @results_locations.each do |t|
+			%tr
+				%br
+				%br
+				%td= t.city
+				%td= t.state
+				- t.wildfires.each do |a|
+					%tr
+						%td
+						%td
+						%td= a.start_date

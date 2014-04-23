@@ -1,0 +1,25 @@
+%h1 Listing wildfires
+%table
+  %thead
+    %tr
+      %th Start date
+      %th End date
+      %th Size
+      %th Ongoing
+      %th Location
+      %th
+      %th
+      %th
+  %tbody
+    - @wildfires.each do |wildfire|
+      %tr
+        %td= wildfire.start_date
+        %td= wildfire.end_date
+        %td= wildfire.size
+        %td= wildfire.ongoing
+        %td= wildfire.location_id
+        %td= link_to 'Show', wildfire
+        %td= link_to 'Edit', edit_wildfire_path(wildfire)
+        %td= link_to 'Destroy', wildfire, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Wildfire', new_wildfire_path

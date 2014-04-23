@@ -1,0 +1,15 @@
+%p#notice= notice
+%p
+  %strong City:
+  = @location.city
+%p
+  %strong State:
+  = @location.state
+%p
+  %strong Prevention program:
+  = @location.prevention_program
+= link_to 'Edit', edit_location_path(@location)
+%br
+= link_to 'Add a wildfire', new_wildfire_path
+|
+\#{link_to 'Back', locations_path}

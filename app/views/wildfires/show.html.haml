@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Start date:
+  = @wildfire.start_date
+%p
+  %strong End date:
+  = @wildfire.end_date
+%p
+  %strong Size:
+  = @wildfire.size
+%p
+  %strong Ongoing:
+  = @wildfire.ongoing
+%p
+  %strong Location:
+  = @wildfire.location_id
+= link_to 'Edit', edit_wildfire_path(@wildfire)
+|
+\#{link_to 'Back', wildfires_path}

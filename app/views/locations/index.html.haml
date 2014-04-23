@@ -1,0 +1,36 @@
+
+%h1 Locations of Wildfire Events
+%table
+  %thead
+    %tr
+      %th City
+      %th State
+      %th Prevention program
+      %th
+      %th
+      %th
+  %tbody
+    - @locations.each do |location|
+      %tr
+        %td= location.city
+        %td= location.state
+        - if location.prevention_program
+          %td= "Yes"
+        - else
+          %td= "No"
+        %td= link_to 'View', location
+        %td
+        %td= link_to 'Edit', edit_location_path(location)
+        %td
+        %td= link_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'ADD NEW LOCATION', new_location_path
+%br
+%br
+%br
+
+= form_tag(results_locations_path, method: "get") do
+  = label_tag(:q, "Find a location:")
+  = text_field_tag(:search, params[:search])
+  = select_tag :query, "<option>By location</option><option>By date</option>".html_safe
+  = submit_tag("Search")
