@@ -1,11 +1,15 @@
 class Location < ActiveRecord::Base
 	has_many :wildfires
 
+  scope :active_fires, -> { joins.(:wildfires).where(ongoing: true) }
+
 	def self.search(query)
 		search = "%#{query}%"
 		search.downcase!
     where("LOWER(city) like ? OR LOWER(state) like ?", search, search)
   end
+
+
 
   # def self.date_search(query)
   # 	search = "%#{query}%"

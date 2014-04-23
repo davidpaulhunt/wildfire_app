@@ -1,5 +1,8 @@
 %p#notice= notice
 %p
+  %strong Location:
+  = @city
+%p
   %strong Start date:
   = @wildfire.start_date
 %p
@@ -9,11 +12,12 @@
   %strong Size:
   = @wildfire.size
 %p
-  %strong Ongoing:
-  = @wildfire.ongoing
+  %strong Fire Damage:
+  %br/
+  = image_tag @wildfire.fire_damage.url
+  = button_to "Download Damage", download_fire_damage_wildfire_path, :method => "get", :class => "btn btn-primary"
 %p
-  %strong Location:
-  = @wildfire.location_id
-= link_to 'Edit', edit_wildfire_path(@wildfire)
-|
-\#{link_to 'Back', wildfires_path}
+  %strong Ongoing:
+  = @status
+= button_to 'Edit', edit_wildfire_path(@wildfire), method: "get", :class => "btn btn-warning"
+= button_to 'Back', wildfires_path, method: "get", :class => "btn btn-default"

@@ -24,11 +24,8 @@ class LocationsController < ApplicationController
   # GET /locations/results
   def results
     search_type = params[:query]
-    if search_type == "By location"
-      @results_locations = Location.search(params[:search])
-    else
-      @results_locations = Location.date_search(params[:search])
-    end
+    @locations = Location.search(params[:search])
+    render 'index'
   end
 
 

@@ -1,12 +1,12 @@
 
 %h1 Locations of Wildfire Events
-%table
+%table.table.table-striped.table-hover
   %thead
     %tr
       %th City
       %th State
       %th Prevention program
-      %th
+      %th Fires to Date
       %th
       %th
   %tbody
@@ -14,17 +14,19 @@
       %tr
         %td
           %h6= location.city
-        %td= location.state
+        %td
+          %h6= location.state
         - if location.prevention_program
-          %td= "Yes"
+          %td
+            %h6= "Yes"
         - else
-          %td= "No"
+          %td
+            %h6= "No"
+        %td= location.wildfires.count
         %td= button_to 'View', location, :method => "get", :class => "btn btn-primary"
-        %td
         %td= button_to 'Edit', edit_location_path(location), :method => "get", :class => "btn"
-        %td
         %td= button_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"
-%br/
+
 = button_to 'NEW LOCATION', new_location_path, :method => "get", :class => "btn btn-success"
 %br
 %br

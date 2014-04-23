@@ -1,7 +1,20 @@
 WildfireApp::Application.routes.draw do
   
 
-  resources :wildfires
+  resources :wildfires do
+    member do
+      get :download_fire_damage
+    end
+
+    member do
+      get :add_to_location
+    end
+
+    collection do
+      get 'results'
+    end
+
+  end
 
   resources :locations do
     

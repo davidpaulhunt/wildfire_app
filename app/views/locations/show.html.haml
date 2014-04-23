@@ -11,9 +11,25 @@
     ="Yes"
   - else
     ="No"
+%p
+  %strong Fires to Date:
+  = @location.wildfires.count
 = button_to 'Edit', edit_location_path(@location), :method => "get", :class => "btn btn-warning"
 %br/
-= button_to 'Report Wildfire', new_wildfire_path, :method => "get", :class => "btn btn-success", :location_id => "#{@location_id}"
+= link_to 'Report Wildfire', add_to_location_wildfire_path(:wildfire => {:location_id => @location.id}), :method => "get", :class => "btn btn-success", :style => "color:white;"
 %br
+%h6 Wildfire Events
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Duration
+      %th Size
+      %th Pictures
+  %tbody
+    - @location.wildfires.each do |w|
+      %tr
+        %td= w.start_date.strftime('%b %d') + " - " + w.end_date.strftime('%b %d %Y')
+        %td= w.size
+        %td= image_tag w.fire_damage.url
 
 \#{button_to 'Back', locations_path, :method => "get", :class => "btn"}

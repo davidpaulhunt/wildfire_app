@@ -1,25 +1,46 @@
-%h1 Listing wildfires
-%table
+
+%h1 Wildfire Events
+%table.table.table-striped.table-hover
   %thead
     %tr
-      %th Start date
-      %th End date
-      %th Size
-      %th Ongoing
       %th Location
+      %th
+      %th Fire Duration
+      %th
+      %th
+      %th
+      %th Size
+      %th
+      %th Status
+      %th
+      %th
       %th
       %th
       %th
   %tbody
     - @wildfires.each do |wildfire|
       %tr
-        %td= wildfire.start_date
-        %td= wildfire.end_date
+        %td
+          %h6= wildfire.display_location
+        %td
+        %td= wildfire.start_date.strftime('%b %d') + " - " + wildfire.end_date.strftime('%b %d %Y')
+        %td
+        %td
+        %td
         %td= wildfire.size
-        %td= wildfire.ongoing
-        %td= wildfire.location_id
-        %td= link_to 'Show', wildfire
-        %td= link_to 'Edit', edit_wildfire_path(wildfire)
-        %td= link_to 'Destroy', wildfire, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+        %td= wildfire.ongoing ? "Active" : "Inactive"
+        %td
+        %td
+        %td= button_to 'View', wildfire, :method => "get", :class => "btn btn-primary"
+        %td
+        %td= button_to 'Edit', edit_wildfire_path(wildfire), :method => "get", :class => "btn"
+        %td
+        %td= button_to 'Delete', wildfire, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"
 %br/
-= link_to 'New Wildfire', new_wildfire_path
+= button_to 'REPORT WILDFIRE', new_wildfire_path, :method => "get", :class => "btn btn-success"
+%br
+%br
+%br
+
+= render 'search_form'

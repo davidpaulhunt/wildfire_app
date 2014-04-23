@@ -10,11 +10,19 @@ class WildfiresController < ApplicationController
   # GET /wildfires/1
   # GET /wildfires/1.json
   def show
+    @wildfire = Wildfire.find(params[:id])
+    @city = @wildfire.display_location
+    @status = @wildfire.ongoing ? "Yes" : "No"
   end
 
   # GET /wildfires/new
   def new
     @wildfire = Wildfire.new
+  end
+
+  def add_to_location
+    @wildfire = Wildfire.new(wildfire_params)
+    render 'new'
   end
 
   # GET /wildfires/1/edit
@@ -61,6 +69,18 @@ class WildfiresController < ApplicationController
     end
   end
 
+  # GET /wildfires/1/fire_damage
+  def download_fire_damage
+    @wildfire = Wildfire.find(params[:id])
+    file = @wildfire.fire_damage
+    send_file file.path
+  end
+
+  def results
+    @wildfires = Wildfire.search(params[:search])
+    render 'index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wildfire
@@ -69,6 +89,10 @@ class WildfiresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wildfire_params
-      params.require(:wildfire).permit(:start_date, :end_date, :size, :ongoing, :location_id)
+      params.require(:wildfire).permit(:start_date, :end_date, :size, :ongoing, :location_id, :fire_damage, :wildfires_attributes => [ :location_id ])
+    end
+
+    def location_wildfire_params
+      params.permit(:wildfire, {:location_id => []})
     end
 end

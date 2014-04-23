@@ -30,6 +30,10 @@
     %br/
     = f.select :location_id, Location.all.collect {|l| [(l.city + ", " + l.state), l.id ]}
     %br/
+  .field
+    = f.label "Photo of Damage"
+    = f.file_field :fire_damage
     %br
   .actions
     = f.submit("Report Fire", :class => "btn btn-success")
+    

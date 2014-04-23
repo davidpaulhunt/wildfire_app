@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422174444) do
+ActiveRecord::Schema.define(version: 20140423170813) do
 
   create_table "locations", force: true do |t|
     t.string   "city"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140422174444) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "fire_damage"
   end
 
 end
