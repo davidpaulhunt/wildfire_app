@@ -14,6 +14,10 @@ WildfireApp::Application.routes.draw do
       get 'results'
     end
 
+    collection do
+      get 'burning'
+    end
+
   end
 
   resources :locations do

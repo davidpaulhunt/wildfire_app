@@ -4,6 +4,8 @@ class Wildfire < ActiveRecord::Base
 
 	mount_uploader :fire_damage, FireDamageUploader
 
+	scope :burning, -> { where(ongoing: true) }
+
 	def display_location
 		Location.joins(:wildfires).where('locations.id = ?', location_id).first.city
 	end
@@ -12,6 +14,10 @@ class Wildfire < ActiveRecord::Base
 		search = "%#{query}%"
 		search.downcase!
     Location.joins(:wildfires).where("LOWER(locations.city) like ? OR LOWER(locations.state) like ?", search, search)
-  end	
+  end
+
+  def self.search_burning
+  	where("wildfires.ongoing = ?", true)
+  end
 
 end
