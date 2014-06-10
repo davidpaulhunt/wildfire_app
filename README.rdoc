@@ -9,6 +9,7 @@ Wildfire Registry allows you to track active and inactive wildfires based on loc
 This is a test app meant to learn and explore the following concepts:
 
 * model relationships
+* uploading files using carrierwave
 * bootstrap views
 * nested attributes
 * app search features
