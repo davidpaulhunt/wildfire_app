@@ -1,28 +1,37 @@
+Wildfire Registry
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## ABOUT
 
-* Ruby version
+Wildfire Registry allows you to track active and inactive wildfires based on location.
 
-* System dependencies
+This is a test app meant to learn and explore the following concepts:
 
-* Configuration
+* model relationships
+* bootstrap views
+* nested attributes
+* app search features
+* scopes
 
-* Database creation
+## Installation / Setup
 
-* Database initialization
+Clone repo locally. Install gems:
 
-* How to run the test suite
+    bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+Set up database. We are using sqlite3.
 
-* Deployment instructions
+    rake db:create db:migrate
 
-* ...
+## Tests
 
+We haven't written any tests, yet.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Contributing
+
+We are currently not taking contributions at the moment.
+
+## Licensing
+
+MIT license.
