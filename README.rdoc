@@ -2,7 +2,7 @@ Wildfire Registry
 == README
 
 
-## ABOUT
+=== ABOUT
 
 Wildfire Registry allows you to track active and inactive wildfires based on location.
 
@@ -14,7 +14,7 @@ This is a test app meant to learn and explore the following concepts:
 * app search features
 * scopes
 
-## Installation / Setup
+=== Installation / Setup
 
 Clone repo locally. Install gems:
 
