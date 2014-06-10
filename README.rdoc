@@ -24,14 +24,14 @@ Set up database. We are using sqlite3.
 
     rake db:create db:migrate
 
-## Tests
+=== Tests
 
 We haven't written any tests, yet.
 
-## Contributing
+=== Contributing
 
 We are currently not taking contributions at the moment.
 
-## Licensing
+=== Licensing
 
 MIT license.
